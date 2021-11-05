@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  
+  - let result = [{name:"Squid Game", runtime:45, broadcastChannel:"Netflix"}, {name:"Her Private Life", runtime:50, broadcastChannel:"Netflix"}, {name:"Game of Throne", runtime:60, broadcastChannel:"HBO Max"}]
+  div(class="container-fluid")
+    div(class="row")
+    - let idx = 0;
+    each value in result 
+      div(class="col-sm-2", onClick=`buy(${idx+1})`, style="padding:10px") Name: #{value.name} Runtime: #{value.runtime} Broadcast Channel: #{value.broadcastChannel}
+      - idx += 1;
+  script.
+    function buy(index) {
+      alert("You purchased item "+index);
+    }

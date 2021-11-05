@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p Yemi's Into to Pug
+  button(type="button", class="btn btn-primary", onClick="update()") Press Me
+  div(id="target") Display
+  a(href="/televisionShows") GO TO SEARCH
+
+  script.
+    let client_count = 0;
+    function update() {
+      client_count += 1;
+      out = document.getElementById('target');
+      out.innerHTML = "Value now " + client_count;
+    }

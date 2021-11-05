@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p Rows: #{query.rows} Column: #{query.cols}
+  - let rows = Number(query.rows)
+  - let cols = Number(query.cols)
+  if (!Number.isInteger(rows) || !Number.isInteger(cols))
+    p Not an Integer
+  else if ((rows > 6) || (rows < 1) )
+    p Row Number too large
+  else if ((cols > 6) || (cols < 1) )
+    P Col NUmber too large
+  - else
+    table#outer
+        - for(let i=0; i<rows; i++) {
+            tr#middle
+                - for(let j = 0; j<cols; j++) {
+                    - let nums = ((i+j)%rows);
+                    td=(nums)
+                - }
+
+        - }
