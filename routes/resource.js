@@ -13,7 +13,7 @@ router.get('/', api_controller.api);
 /// televisionShow ROUTES /// 
  
 // POST request for creating a televisionShow.  
-router.post('/resource/televisionShows', televisionShow_controller.televisionShow_create_post); 
+router.post('/televisionShows', televisionShow_controller.televisionShow_create_post); 
  
 // DELETE request to delete televisionShow. 
 router.delete('/resource/televisionShows/:id', televisionShow_controller.televisionShow_delete); 
