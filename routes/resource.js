@@ -16,14 +16,14 @@ router.get('/', api_controller.api);
 router.post('/televisionShows', televisionShow_controller.televisionShow_create_post); 
  
 // DELETE request to delete televisionShow. 
-router.delete('/resource/televisionShows/:id', televisionShow_controller.televisionShow_delete); 
+router.delete('/televisionShows/:id', televisionShow_controller.televisionShow_delete); 
  
 // PUT request to update televisionShow. 
-router.put('/resource/televisionShows/:id', 
+router.put('/televisionShows/:id', 
 televisionShow_controller.televisionShow_update_put); 
  
 // GET request for one televisionShow. 
-router.get('/resource/televisionShows/:id', televisionShow_controller.televisionShow_detail); 
+router.get('/televisionShows/:id', televisionShow_controller.televisionShow_detail); 
  
 // GET request for list of all televisionShow items. 
 router.get('/televisionShows', televisionShow_controller.televisionShow_list); 

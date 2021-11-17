@@ -24,10 +24,17 @@ exports.televisionShow_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
- 
+  
 // for a specific televisionShow. 
-exports.televisionShow_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: televisionShow detail: ' + req.params.id); 
+exports.televisionShow_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await TelevisionShow.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
  
 // Handle televisionShow create on POST. 
@@ -53,6 +60,22 @@ exports.televisionShow_delete = function(req, res) {
 }; 
  
 // Handle televisionShow update form on PUT. 
-exports.televisionShow_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: televisionShow update PUT' + req.params.id); 
+exports.televisionShow_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await TelevisionShow.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.ts_name)  
+               toUpdate.ts_name = req.body.ts_name; 
+        if(req.body.ts_runtime) toUpdate.ts_runtime = req.body.ts_runtime; 
+        if(req.body.ts_broadcastchannel) toUpdate.ts_broadcastchannel = req.body.ts_broadcastchannel; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
 }; 
