@@ -55,9 +55,17 @@ exports.televisionShow_create_post = async function(req, res) {
 }; 
  
 // Handle televisionShow delete form on DELETE. 
-exports.televisionShow_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: televisionShow delete DELETE ' + req.params.id); 
-}; 
+exports.televisionShow_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await TelevisionShow.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+};  
  
 // Handle televisionShow update form on PUT. 
 exports.televisionShow_update_put = async function(req, res) { 
@@ -77,5 +85,34 @@ ${JSON.stringify(req.body)}`)
         res.status(500) 
         res.send(`{"error": ${err}: Update for id ${req.params.id} 
 failed`); 
+    } 
+}; 
+
+
+ // Handle a show one view with id specified by query 
+ exports.televisionShow_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await TelevisionShow.findById( req.query.id) 
+        res.render('televisionShowsdetail',  
+{ title: 'Television Shows Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle building the view for creating a televisionShow. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.televisionShow_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('televisionShowcreate', { title: 'Television Show Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
     } 
 }; 

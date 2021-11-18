@@ -27,5 +27,11 @@ router.get('/televisionShows/:id', televisionShow_controller.televisionShow_deta
  
 // GET request for list of all televisionShow items. 
 router.get('/televisionShows', televisionShow_controller.televisionShow_list); 
+
+/* GET detail televisionShow page */ 
+router.get('/detail', televisionShow_controller.televisionShow_view_one_Page); 
+
+/* GET create costume page */ 
+router.get('/create', televisionShow_controller.televisionShow_create_Page); 
  
 module.exports = router; 

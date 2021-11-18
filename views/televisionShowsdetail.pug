@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let televisionShowid = toShow._id 
+  - let televisionShowname = toShow.ts_name 
+  - let televisionShowruntime = toShow.ts_runtime 
+  - let televisionShowbroadcastchannel = toShow.tsbroadcastchannel 
+  div 
+    div.row 
+      div(class='televisionShowAttr mr-3') Television Show ID is: 
+      div #{televisionShowid} 
+    div.row 
+      div(class='televisionShowAttr mr-3') Television Show Type is: 
+      div #{televisionShowname} 
+    div.row 
+      div(class='televisionShowAttr mr-3') Television Show Size is: 
+      div #{televisionShowruntime} 
+    div.row 
+      div(class='televisionShowAttr mr-3') Television Show Cost is: 
+      div #{televisionShowbroadcastchannel} 
