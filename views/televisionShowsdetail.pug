@@ -2,21 +2,24 @@ extends layout
  
 block content 
   h1= title 
+  if (toShow == null)
+    h2 Nothing to Show 
+  else 
  
-  - let televisionShowid = toShow._id 
-  - let televisionShowname = toShow.ts_name 
-  - let televisionShowruntime = toShow.ts_runtime 
-  - let televisionShowbroadcastchannel = toShow.tsbroadcastchannel 
-  div 
-    div.row 
-      div(class='televisionShowAttr mr-3') Television Show ID is: 
-      div #{televisionShowid} 
-    div.row 
-      div(class='televisionShowAttr mr-3') Television Show Name is: 
-      div #{televisionShowname} 
-    div.row 
-      div(class='televisionShowAttr mr-3') Television Show Runtime is: 
-      div #{televisionShowruntime} 
-    div.row 
-      div(class='televisionShowAttr mr-3') Television Show Broadcast Channel is: 
-      div #{televisionShowbroadcastchannel} 
+    - let televisionShowid = toShow._id 
+    - let televisionShowname = toShow.ts_name 
+    - let televisionShowruntime = toShow.ts_runtime 
+    - let televisionShowbroadcastchannel = toShow.tsbroadcastchannel 
+    div 
+        div.row 
+        div(class='televisionShowAttr mr-3') Television Show ID is: 
+        div #{televisionShowid} 
+        div.row 
+        div(class='televisionShowAttr mr-3') Television Show Name is: 
+        div #{televisionShowname} 
+        div.row 
+        div(class='televisionShowAttr mr-3') Television Show Runtime is: 
+        div #{televisionShowruntime} 
+        div.row 
+        div(class='televisionShowAttr mr-3') Television Show Broadcast Channel is: 
+        div #{televisionShowbroadcastchannel} 
