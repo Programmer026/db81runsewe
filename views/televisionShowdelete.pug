@@ -1,0 +1,53 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let televisionShowid = toShow._id 
+    - let televisionShowname = toShow.ts_name 
+    - let televisionShowruntime = toShow.ts_runtime 
+    - let televisionShowbroadcastchannel = toShow.ts_broadcastchannel 
+    - let actionid = "/resource/televisionShows/" + televisionShowid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='televisionShowAttr mr-3') televisionShow ID is: 
+        div #{televisionShowid} 
+      div.row 
+        div(class='televisionShowAttr mr-3') televisionShow Type is: 
+        div #{televisionShowname} 
+      div.row 
+        div(class='televisionShowAttr mr-3') televisionShow broadcastchannel is: 
+        div #{televisionShowbroadcastchannel} 
+      div.row 
+        div(class='televisionShowAttr mr-3') televisionShow runtime is: 
+        div #{televisionShowruntime} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the televisionShow collection 
+      window.location.href='/televisionShows' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'     
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/televisionShows' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
