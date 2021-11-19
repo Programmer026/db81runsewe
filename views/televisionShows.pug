@@ -6,11 +6,11 @@ block content
   - let result = results;
   div(class="container-fluid")
     div(class="row")
-    - let idx = 0;
-    each value in result 
-      div(class="col-sm-2", onClick=`buy(${idx+1})`, style="padding:10px") Name: #{value.ts_name} Runtime: #{value.ts_runtime} Broadcast Channel: #{value.ts_broadcastchannel}
-      - idx += 1;
+      each value in result
+        - let destination = `dispatch(\"/resource/update?id=${value._id}\")`
+        div(class="col-sm-2", onClick=`buy(${idx+1})`, style="padding:10px") Name: #{value.ts_name} Runtime: #{value.ts_runtime} Broadcast Channel: #{value.ts_broadcastchannel}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-    function buy(index) {
-      alert("You purchased item "+index);
-    }
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
