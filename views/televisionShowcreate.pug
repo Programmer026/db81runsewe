@@ -26,6 +26,7 @@ block content
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
         alert("Save succeded") 
+        window.location.href='/televisionShows'
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
