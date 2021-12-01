@@ -18,13 +18,13 @@ block content
     form(id='televisionShowForm', action= actionid, method="PUT") 
         div.form-group 
             label.televisionShowAttr(for='name') Television Show name 
-            input#name(type='text', name='name', value= televisionShowname ) 
+            input#name(type='text', name='ts_name', value= televisionShowname ) 
         div.form-group 
             label.televisionShowAttr(for='runtime') Television Show runtime 
-            input#runtime(type='number', name='runtime', value= televisionShowruntime ) 
+            input#runtime(type='number', name='ts_runtime', value= televisionShowruntime ) 
         div.form-group 
             label.televisionShowAttr(for='broadcastchannel') Television Show broadcastchannel 
-            input#broadcastchannel(type='text', name='broadcastchannel', value= televisionShowbroadcastchannel ) 
+            input#broadcastchannel(type='text', name='ts_broadcastchannel', value= televisionShowbroadcastchannel ) 
         input(type="submit") 
     
     script. 

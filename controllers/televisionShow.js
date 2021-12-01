@@ -78,6 +78,7 @@ ${JSON.stringify(req.body)}`)
                toUpdate.ts_name = req.body.ts_name; 
         if(req.body.ts_runtime) toUpdate.ts_runtime = req.body.ts_runtime; 
         if(req.body.ts_broadcastchannel) toUpdate.ts_broadcastchannel = req.body.ts_broadcastchannel; 
+        console.log(toUpdate)
         let result = await toUpdate.save(); 
         console.log("Sucess " + result) 
         res.send(result) 

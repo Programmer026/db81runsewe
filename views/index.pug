@@ -1,17 +1,12 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-  p Yemi's Into to Pug
-  button(type="button", class="btn btn-primary", onClick="update()") Press Me
-  div(id="target") Display
-  a(href="/televisionShows") GO TO SEARCH
-
-  script.
-    let client_count = 0;
-    function update() {
-      client_count += 1;
-      out = document.getElementById('target');
-      out.innerHTML = "Value now " + client_count;
-    }
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/televisionShows") Take me to televisionShows 
+    br 
+    a(href="/logout") Logout 

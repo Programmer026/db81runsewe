@@ -2,14 +2,26 @@ extends layout
 
 block content
   h1= title
-  
+
+  - let createDes = `dispatch(\"/resource/create\")`
+  button.btn( class="btn-primary ml-1", onclick= createDes) Add
   - let result = results;
   div(class="container-fluid")
     div(class="row")
       each value in result
         - let destination = `dispatch(\"/resource/update?id=${value._id}\")`
-        div(class="col-sm-2", onClick=`buy(${idx+1})`, style="padding:10px") Name: #{value.ts_name} Runtime: #{value.ts_runtime} Broadcast Channel: #{value.ts_broadcastchannel}
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
+        - let deleteDestination = `dispatch(\"/resource/delete?id=${value._id}\")`
+        - let detailDestination = `dispatch(\"/resource/detail?id=${value._id}\")`
+        div(class="row")
+          div(class="col-sm-2", style="padding:10px") Name: #{value.ts_name}  
+          div(class="col-sm-2", style="padding:10px") Runtime: #{value.ts_runtime}
+          div(class="col-sm-2", style="padding:10px") Broadcast Channel: #{value.ts_broadcastchannel}
+          div(class="col-sm-2", style="padding:10px")
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
+          div(class="col-sm-2", style="padding:10px")
+            button.btn( class="btn-danger ml-1", onclick= deleteDestination) Delete
+          div(class="col-sm-2", style="padding:10px")
+            button.btn( class="btn-primary ml-1", onclick= detailDestination) Details
   script.
     function dispatch(path){ 
       window.location.href=path 
