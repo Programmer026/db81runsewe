@@ -40,13 +40,13 @@ router.get('/televisionShows', televisionShow_controller.televisionShow_list);
 router.get('/detail', televisionShow_controller.televisionShow_view_one_Page); 
 
 /* GET create televisionShow page */ 
-router.get('/create', televisionShow_controller.televisionShow_create_Page); 
+router.get('/create', secured, televisionShow_controller.televisionShow_create_Page); 
 
 /* GET create update page */ 
 router.get('/update', secured, televisionShow_controller.televisionShow_update_Page); 
 
 /* GET create televisionShow page */ 
-router.get('/delete', televisionShow_controller.televisionShow_delete_Page); 
+router.get('/delete', secured, televisionShow_controller.televisionShow_delete_Page); 
  
  
 module.exports = router; 
